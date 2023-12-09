@@ -86,11 +86,12 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: start;
-  gap: 30px;
+  gap: 96px;
 }
 
 .gift__card {
   max-width: 580px;
+  width: calc(50% - 16px);
 }
 
 .gift__swiper--card {
@@ -111,12 +112,14 @@ html {
 }
 
 .gift__card-thumb {
+  width: 72px;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .gift__form {
   max-width: 480px;
+  width: 100%;
 }
 
 .form {
@@ -133,6 +136,8 @@ html {
 .form__label-text {
   display: block;
   margin-bottom: 4px;
+  /* оключить перенос строки */
+  white-space: nowrap;
 }
 
 .form__field {
@@ -214,7 +219,7 @@ html {
 
 .card {
   position: relative;
-  width: 580px;
+  max-width: 580px;
   height: 375px;
   perspective: 1000px;
 }
@@ -232,8 +237,8 @@ html {
 
 .card__front {
   position: absolute;
-  backface-visibility: hidden;
   inset: 0;
+  backface-visibility: hidden;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -242,13 +247,15 @@ html {
   display: block;
   max-width: 100%;
   height: auto;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .card__back {
   position: absolute;
-  backface-visibility: hidden;
   inset: 0;
   padding: 32px;
+  backface-visibility: hidden;
   border-radius: 20px;
   background-color: #fff;
   transform: rotateY(180deg);
@@ -284,4 +291,103 @@ html {
 .card__message {
   font-size: 20px;
   margin: 0;
+}
+
+@media (width <=1080px) {
+  .header {
+    padding: 32px 0 16px;
+  }
+
+  .gift {
+    padding: 16px 0 34px;
+  }
+
+  .gift__title {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .gift__description {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .gift__card {
+    max-width: 464px;
+    width: 100%;
+    padding-top: 8px;
+  }
+
+  .form {
+    row-gap: 12px;
+  }
+
+  .congratulations__title {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .congratulations__description {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+}
+
+@media (width <=980px) {
+  .container {
+    padding: 0 44px;
+  }
+
+  .gift__wrapper {
+    flex-wrap: wrap;
+  }
+
+  .gift__form {
+    max-width: 100%;
+  }
+}
+
+@media (width <=580px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .header {
+    padding-top: 24px;
+  }
+
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  .gift__card-thumb {
+    width: 56px;
+    border-radius: 4px;
+  }
+
+  .card {
+    height: calc((186 / 288 * 100vw) - 20px);
+    margin-bottom: 20px;
+  }
+
+  .card__back {
+    padding: 24px;
+  }
+
+  .card__title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .card__message {
+    font-size: 16px;
+  }
+
+  .card__contacts {
+    margin-bottom: 0;
+  }
+
+  .card__subtitle {
+    opacity: 0.5;
+  }
 }
