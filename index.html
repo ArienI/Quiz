@@ -12,13 +12,17 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
 
   <link rel="stylesheet" href="normalize.css" />
   <link rel="stylesheet" href="style.css" />
 
   <link rel="icon" href="./image/Frame.svg" type="image/svg+xml" />
+
+  <script src="https://unpkg.com/imask" defer></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js" defer></script>
 
   <script src="app.js" defer></script>
 </head>
@@ -41,16 +45,16 @@
             <div class="swiper gift__swiper gift__swiper--card">
               <div class="swiper-wrapper">
                 <div class="swiper-slide gift__card-slide">
-                  <img class="gift__card-image" src="./image/1.png" alt="открытка №1">
+                  <img class="gift__card-image" src="./image/1.png" data-card="card_01" alt="открытка №1">
                 </div>
                 <div class="swiper-slide gift__card-slide">
-                  <img class="gift__card-image" src="./image/2.png" alt="открытка №2">
+                  <img class="gift__card-image" src="./image/2.png" data-card="card_02" alt="открытка №2">
                 </div>
                 <div class="swiper-slide gift__card-slide">
-                  <img class="gift__card-image" src="./image/3.png" alt="открытка №3">
+                  <img class="gift__card-image" src="./image/3.png" data-card="card_03" alt="открытка №3">
                 </div>
                 <div class="swiper-slide gift__card-slide">
-                  <img class="gift__card-image" src="./image/4.png" alt="открытка №4">
+                  <img class="gift__card-image" src="./image/4.png" data-card="card_04" alt="открытка №4">
                 </div>
               </div>
             </div>
@@ -81,7 +85,7 @@
 
             <label class="form__label">
               <span class="form__label-text">телефон отправителя</span>
-              <input type="tel" class="form__field" name="sender_phone" placeholder="+7-(000)-000-0000">
+              <input type="tel" class="form__field form__field--phone" name="sender_phone">
             </label>
 
             <label class="form__label">
@@ -91,7 +95,7 @@
 
             <label class="form__label">
               <span class="form__label-text">телефон получателя</span>
-              <input type="tel" class="form__field" name="receiver_phone" placeholder="+7-(000)-000-0000">
+              <input type="tel" class="form__field form__field--phone" name="receiver_phone">
             </label>
 
             <label class="form__label form__label--textarea">
@@ -99,6 +103,9 @@
               <textarea class="form__field form__field--textarea" name="message"
                 placeholder="Напишите теплые слова"></textarea>
             </label>
+
+            <!-- type="hidden"- будет не видно -->
+            <input class="form__card" type="hidden" name="card">
 
             <button type="submit" class="form__button" disabled>Отправить</button>
           </form>
