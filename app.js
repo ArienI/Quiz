@@ -1,3 +1,6 @@
+
+const API_URL = "https://fuzzy-perpetual-roquefort.glitch.me/";
+
 const swiperThumb = new Swiper('.gift__swiper--thumb', {
   spaceBetween: 12,
   slidesPerView: "auto",
@@ -28,8 +31,8 @@ const cardInput = form.querySelector('.form__card');
 const updateCardInput = () => {
   const activeSlide = document.querySelector('.gift__swiper--card .swiper-slide-active');
   const cardData = activeSlide.querySelector('.gift__card-image').dataset.card;
-  console.log("cardData: ", cardData)
-}
+  cardInput.value = cardData;
+};
 
 updateCardInput();
 
@@ -69,7 +72,7 @@ const phoneValiidateOPtion = {
 
 form.addEventListener('input', updateSubmitButton);
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
   event.preventDefault()
 
   const errors = validate(form, {
@@ -87,5 +90,34 @@ form.addEventListener('submit', (event) => {
 
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);
+  // console.log("data: ", data);
+
+  try {
+    const response = await fetch(`${API_URL}/api/gift`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json()
+
+    if (response.ok) {
+      prompt('Открытка успешно сохранена. Доступна по адресу: ', `${location.origin}/card.html?id=${result.id}`,);
+      form.reset();
+    } else {
+      alert(`ошибка при отправке: ${result.message}`)
+    }
+
+
+
+
+
+  } catch (error) {
+    console.error(`ошибка при отправке: ${error}`)
+    alert(`произошла ошибка, поробуйте снова`)
+  }
+
 
 });
